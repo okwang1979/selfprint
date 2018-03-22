@@ -23,7 +23,9 @@ public class SimpleSpittleRepository implements SpittleRepository {
 	 List<Spittle> rtn = new ArrayList<Spittle>();
 	 
 	  for (int i=0; i < 20; i++) {
-		  rtn.add(new Spittle("Spittle " + i, new Date()));
+		  long longId = i;
+		  spittles.add(new Spittle(longId,"Spittle " + i, new Date(),null,null));
+//		  rtn.add(new Spittle("Spittle " + i, new Date()));
 	    }
 	  return rtn;
  		
@@ -45,6 +47,14 @@ public class SimpleSpittleRepository implements SpittleRepository {
 	}
 
 	public Spittle findOne(long id) {
+		if(spittles.size()==0){
+			
+			  for (int i=0; i < 20; i++) {
+				 
+				  spittles.add(new Spittle(id,"Spittle " + i, new Date(),null,null));
+			    }
+			
+		}
 		for(Spittle spittle:spittles){
 			if(spittle.getId()==id){
 				return spittle; 
