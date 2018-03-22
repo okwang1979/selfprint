@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.spring.IGoSchool;
 import com.spring.Student;
+import com.spring.aspect.StudentAspect;
 import com.spring.config.SpringConfig;
 
 import junit.framework.Assert;
@@ -34,6 +35,9 @@ public class TestSpringCreatBean {
 	private Student student;
 	
 	@Autowired
+	private StudentAspect bookCount;
+	
+	@Autowired
 	Environment env;
 	
 	@Test
@@ -50,6 +54,10 @@ public class TestSpringCreatBean {
 		
 		Assert.assertTrue(env.getProperty("sex").length()>0);
 		Assert.assertEquals(env.getProperty("sex",Integer.class),student.getSex());
+		
+		student.lookBook("like");
+		
+		
 //		log.clear();
 //		System.out.println("aaa");
 //		Assert.assertEquals(log.getLog(),"aaa\r\n");

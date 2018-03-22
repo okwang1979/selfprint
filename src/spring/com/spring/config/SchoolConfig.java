@@ -6,6 +6,7 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.core.env.Environment;
@@ -14,9 +15,11 @@ import com.spring.EmptySpringCondition;
 import com.spring.GoSchoolByCar;
 import com.spring.IGoSchool;
 import com.spring.Student;
+import com.spring.aspect.StudentAspect;
 
 @Configuration
 @PropertySource("classpath:/properties/app.properties")
+@EnableAspectJAutoProxy
 public class SchoolConfig {
 	@Bean(name="carSchool")
 	@Conditional(EmptySpringCondition.class)
@@ -25,6 +28,11 @@ public class SchoolConfig {
 	}
 	@Autowired
 	Environment env;
+	
+	@Bean
+	public StudentAspect studentAspect(){
+		return new StudentAspect();
+	}
 	
 	@Bean(name="carStudent")
 	@Conditional(EmptySpringCondition.class)

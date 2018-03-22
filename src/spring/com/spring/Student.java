@@ -10,7 +10,9 @@ public class Student {
 	
 	
 	
-	
+	public void lookBook(String bookName){
+		System.out.println(name+"look");
+	}
 
  
 
