@@ -20,7 +20,7 @@
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
-/target/
+/target/d
 x64/
 x86/
 bld/
